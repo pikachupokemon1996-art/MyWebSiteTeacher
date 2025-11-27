@@ -23,7 +23,7 @@
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
             position: relative;
-            padding: 20px;
+            padding: 0;
         }
         
         body::before {
@@ -41,6 +41,90 @@
             z-index: 0;
         }
         
+        /* ФИКСИРОВАННАЯ НАВИГАЦИЯ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.95) 0%, rgba(22, 33, 62, 0.98) 100%);
+            border-bottom: 2px solid #8a2be2;
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #8a2be2, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-right: 40px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: #e0e0ff;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8a2be2, #ffd700);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: #ffd700;
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
         .scroll-container {
             position: relative;
             max-width: 920px;
@@ -53,7 +137,7 @@
             z-index: 10;
             cursor: pointer;
             transition: transform 0.3s ease;
-            margin-top: 20px;
+            margin-top: 100px;
             margin-bottom: 40px;
         }
         
@@ -128,6 +212,85 @@
             font-family: 'Poppins', sans-serif;
             color: #c5c5ff;
             font-weight: 300;
+        }
+        
+        /* СЕКЦИЯ НАСТАВНИКА-ДРАКОНА */
+        .master-section {
+            background: linear-gradient(135deg, rgba(34, 28, 47, 0.8) 0%, rgba(26, 22, 37, 0.85) 100%);
+            border: 2px solid #8a2be2;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .master-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .master-title {
+            font-size: 2rem;
+            color: #ffd700;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffd700, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .master-subtitle {
+            color: #c5c5ff;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+        
+        .master-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .master-image-container {
+            flex: 0 0 220px;
+            height: 280px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid #8a2be2;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .master-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .master-info {
+            flex: 1;
+        }
+        
+        .master-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #e0e0ff;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .master-credentials {
+            background: rgba(138, 43, 226, 0.15);
+            border-left: 3px solid #8a2be2;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #d0d0ff;
         }
         
         .teachings {
@@ -352,6 +515,503 @@
             pointer-events: none;
         }
         
+        /* Секция путеводителя дракона */
+        .guide-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(138, 90, 205, 0.3);
+        }
+        
+        .guide-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ffd700, #daa520, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        }
+        
+        .guide-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .guide-card {
+            background: linear-gradient(135deg, rgba(34, 28, 47, 0.9) 0%, rgba(26, 22, 37, 0.95) 100%);
+            border: 2px solid #8a5a2a;
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(3px);
+            text-align: center;
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 8px 25px rgba(138, 90, 42, 0.3);
+        }
+        
+        .guide-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .guide-name {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .guide-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #e0d0b0;
+            margin-bottom: 15px;
+            min-height: 60px;
+        }
+        
+        .guide-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .ancient-coin {
+            font-size: 1.2rem;
+        }
+        
+        .buy-button {
+            background: linear-gradient(45deg, #8a2be2, #4a00e0);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .buy-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+        }
+        
+        /* Модальное окно */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 3px solid #8a2be2;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #8a2be2;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            color: #ffd700;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .carousel-container {
+            position: relative;
+            margin-bottom: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+        }
+        
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carousel-image {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-nav.prev {
+            left: 10px;
+        }
+        
+        .carousel-nav.next {
+            right: 10px;
+        }
+        
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #e0e0ff;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .modal-contact-button {
+            background: linear-gradient(45deg, #ff69b4, #8a2be2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+        }
+        
+        .modal-contact-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 0;
+            }
+            
+            .nav-container {
+                padding: 0 15px;
+            }
+            
+            .nav-logo {
+                font-size: 1.5rem;
+                margin-right: 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+                padding: 6px 0;
+            }
+            
+            .scroll-container {
+                margin-top: 90px;
+                margin: 80px 10px 20px 10px;
+                border-width: 10px;
+            }
+            
+            .scroll-content {
+                padding: 25px;
+                min-height: auto;
+            }
+            
+            .master-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .master-image-container {
+                flex: none;
+                width: 200px;
+                height: 240px;
+                margin: 0 auto 20px auto;
+            }
+            
+            .dragon-symbol {
+                font-size: 2.8rem;
+            }
+            
+            .dragon-title {
+                font-size: 2.2rem;
+            }
+            
+            .ancient-motto {
+                font-size: 1rem;
+            }
+            
+            .master-title {
+                font-size: 1.6rem;
+            }
+            
+            .master-description {
+                font-size: 1rem;
+            }
+            
+            .teachings-title {
+                font-size: 1.6rem;
+            }
+            
+            .wisdom-item {
+                padding: 18px;
+                margin: 12px 0;
+            }
+            
+            .wisdom-item h3 {
+                font-size: 1.2rem;
+            }
+            
+            .wisdom-item p {
+                font-size: 0.95rem;
+            }
+            
+            .contact-seal {
+                margin-top: 20px;
+                padding: 16px;
+            }
+            
+            .seal-title {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                font-size: 1rem;
+            }
+            
+            .ornament {
+                font-size: 1.5rem;
+            }
+            
+            .floating-scroll {
+                font-size: 2rem;
+            }
+            
+            .guide-title {
+                font-size: 1.6rem;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .carousel-container {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-logo {
+                font-size: 1.3rem;
+                margin-right: 15px;
+            }
+            
+            .nav-menu {
+                gap: 10px;
+            }
+            
+            .nav-link {
+                font-size: 0.9rem;
+            }
+            
+            .scroll-container {
+                margin-top: 80px;
+                margin: 70px 5px 15px 5px;
+            }
+            
+            .master-image-container {
+                width: 160px;
+                height: 200px;
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            .dragon-symbol {
+                font-size: 2.2rem;
+            }
+            
+            .dragon-title {
+                font-size: 1.8rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .ancient-motto {
+                font-size: 0.9rem;
+            }
+            
+            .master-title {
+                font-size: 1.4rem;
+            }
+            
+            .teachings-title {
+                font-size: 1.4rem;
+            }
+            
+            .wisdom-item {
+                padding: 15px;
+                margin: 10px 0;
+            }
+            
+            .wisdom-item h3 {
+                font-size: 1.1rem;
+            }
+            
+            .wisdom-item p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
+            .contact-info {
+                font-size: 0.95rem;
+            }
+            
+            .ornament {
+                font-size: 1.2rem;
+                opacity: 0.1;
+            }
+            
+            .floating-scroll {
+                font-size: 1.6rem;
+            }
+            
+            .guide-title {
+                font-size: 1.4rem;
+            }
+            
+            .guide-image {
+                height: 150px;
+            }
+            
+            .guide-name {
+                font-size: 1.1rem;
+            }
+            
+            .guide-price {
+                font-size: 1.2rem;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.6rem;
+            }
+            
+            .carousel-container {
+                height: 200px;
+            }
+            
+            .modal-price {
+                font-size: 1.5rem;
+            }
+            
+            .modal-contact-button {
+                width: 180px;
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+        
         @keyframes pulseGlow {
             0% { 
                 text-shadow: 0 0 12px rgba(138, 43, 226, 0.4); 
@@ -397,121 +1057,39 @@
         .symbol-2 { bottom: 80px; right: 70px; }
         .symbol-3 { top: 200px; right: 100px; }
         
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .scroll-container {
-                margin: 10px;
-                border-width: 10px;
-            }
-            
-            .scroll-content {
-                padding: 25px;
-                min-height: auto;
-            }
-            
-            .dragon-symbol {
-                font-size: 2.8rem;
-            }
-            
-            .dragon-title {
-                font-size: 2.2rem;
-            }
-            
-            .ancient-motto {
-                font-size: 1rem;
-            }
-            
-            .teachings-title {
-                font-size: 1.6rem;
-            }
-            
-            .wisdom-item {
-                padding: 18px;
-                margin: 12px 0;
-            }
-            
-            .wisdom-item h3 {
-                font-size: 1.2rem;
-            }
-            
-            .wisdom-item p {
-                font-size: 0.95rem;
-            }
-            
-            .contact-seal {
-                margin-top: 20px;
-                padding: 16px;
-            }
-            
-            .seal-title {
-                font-size: 1.2rem;
-            }
-            
-            .contact-info {
-                font-size: 1rem;
-            }
-            
-            .ornament {
-                font-size: 1.5rem;
-            }
-            
-            .floating-scroll {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            .dragon-symbol {
-                font-size: 2.2rem;
-            }
-            
-            .dragon-title {
-                font-size: 1.8rem;
-                letter-spacing: 0.5px;
-            }
-            
-            .ancient-motto {
-                font-size: 0.9rem;
-            }
-            
-            .teachings-title {
-                font-size: 1.4rem;
-            }
-            
-            .wisdom-item {
-                padding: 15px;
-                margin: 10px 0;
-            }
-            
-            .wisdom-item h3 {
-                font-size: 1.1rem;
-            }
-            
-            .wisdom-item p {
-                font-size: 0.9rem;
-                line-height: 1.6;
-            }
-            
-            .contact-info {
-                font-size: 0.95rem;
-            }
-            
-            .ornament {
-                font-size: 1.2rem;
-                opacity: 0.1;
-            }
-            
-            .floating-scroll {
-                font-size: 1.6rem;
-            }
-        }
+        /* ID для якорных ссылок */
+        #home { scroll-margin-top: 80px; }
+        #master { scroll-margin-top: 80px; }
+        #teachings { scroll-margin-top: 80px; }
+        #guide { scroll-margin-top: 80px; }
+        #contact { scroll-margin-top: 80px; }
     </style>
 </head>
 <body>
+    <!-- ФИКСИРОВАННАЯ НАВИГАЦИОННАЯ ПАНЕЛЬ -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🐉 Дракон</div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-section="home">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#master" class="nav-link" data-section="master">Наставник</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#teachings" class="nav-link" data-section="teachings">Учения</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#guide" class="nav-link" data-section="guide">Путеводитель</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-section="contact">Контакт</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="scroll-container" id="scrollContainer">
         <div class="scroll-border"></div>
         
@@ -530,13 +1108,42 @@
         <div class="math-symbols symbol-3">π</div>
         
         <div class="scroll-content">
-            <div class="dragon-header">
+            <!-- ГЛАВНАЯ СЕКЦИЯ -->
+            <div id="home" class="dragon-header">
                 <div class="dragon-symbol" id="dragonSymbol">🐉</div>
                 <h1 class="dragon-title">ДРАКОН-НАСТАВНИК</h1>
                 <p class="ancient-motto">"Мудрость Востока в служении точным наукам"</p>
             </div>
             
-            <div class="teachings">
+            <!-- СЕКЦИЯ НАСТАВНИКА-ДРАКОНА -->
+            <div id="master" class="master-section">
+                <div class="master-header">
+                    <h2 class="master-title">Великий Дракон-Наставник</h2>
+                    <p class="master-subtitle">Хранитель древних знаний и мастер математических искусств</p>
+                </div>
+                <div class="master-content">
+                    <div class="master-image-container">
+                        <img src="picha/dragon_master.png" alt="Дракон-Наставник" class="master-image">
+                    </div>
+                    <div class="master-info">
+                        <p class="master-description">
+                            Я — Дракон-Наставник, хранитель древних математических знаний, передаваемых из поколения в поколение. 
+                            Более 100 лет я веду учеников по пути просветления в точных науках, сочетая восточную мудрость 
+                            с современными методами обучения. Мой подход основан на индивидуальном внимании к каждому ученику, 
+                            глубоком понимании предмета и создании гармонии между логикой и интуицией.
+                        </p>
+                        <div class="master-credentials">
+                            <strong>Достижения и опыт:</strong><br>
+                            • Более 1000 успешно подготовленных учеников<br>
+                            • Магистр культа математики, наставник со 100-летним стажем<br>
+                            • Автор уникальной методики обучения "Путь Дракона"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- УЧЕНИЯ ДРАКОНА -->
+            <div id="teachings" class="teachings">
                 <h2 class="teachings-title">УЧЕНИЯ ДРАКОНА</h2>
                 <ul class="wisdom-list">
                     <li class="wisdom-item wisdom-item-1">
@@ -558,18 +1165,116 @@
                 </ul>
             </div>
             
-            <div class="contact-seal" id="contactSeal">
+            <!-- КОНТАКТНАЯ ИНФОРМАЦИЯ -->
+            <div id="contact" class="contact-seal" id="contactSeal" onclick="contactSeller()">
                 <h3 class="seal-title">Печать Контакта</h3>
                 <div class="contact-info">
-                    <p>📱 Телеграм-пергамент: +7 (999) 123-45-67</p>
+                    <p>📱 Связаться через ВКонтакте</p>
                     <p>✉️ Голубиная почта: dragon.math@example.com</p>
                     <p>🏯 Онлайн-павильон и земли Москвы</p>
+                </div>
+            </div>
+            
+            <!-- ПУТЕВОДИТЕЛЬ ДРАКОНА -->
+            <div id="guide" class="guide-section">
+                <h2 class="guide-title">ПУТЕВОДИТЕЛЬ ДРАКОНА</h2>
+                <p class="guide-subtitle">Выберите свой путь к просветлению в математике</p>
+                <div class="guide-grid">
+                    <!-- ПУТЬ ОДИНОКИ СТРАННИКА -->
+                    <div class="guide-card" onclick="openModal(0)">
+                        <img src="picha/dragon.png" alt="Путь Одинокого Странника" class="guide-image">
+                        <h3 class="guide-name">Путь Одинокого Странника</h3>
+                        <p class="guide-description">Одиночное путешествие к мастерству. Личный наставник, персональный план и индивидуальный темп обучения.</p>
+                        <div class="guide-price"><span class="ancient-coin">🪙</span> 700 монет</div>
+                        <button class="buy-button">Следовать Пути</button>
+                    </div>
+                    
+                    <!-- ПУТЕШЕСТВИЕ ВДВОЁМ -->
+                    <div class="guide-card" onclick="openModal(1)">
+                        <img src="picha/on.png" alt="Путешествие Родственных Душ" class="guide-image">
+                        <h3 class="guide-name">Путешествие Родственных Душ</h3>
+                        <p class="guide-description">Обучение в паре с другом или родным человеком. Обмен знаниями, взаимная поддержка и совместное достижение целей.</p>
+                        <div class="guide-price"><span class="ancient-coin">🪙</span> 500 монет</div>
+                        <button class="buy-button">Следовать Пути</button>
+                    </div>
+                    
+                    <!-- ГРУППОВОЕ ПУТЕШЕСТВИЕ -->
+                    <div class="guide-card" onclick="openModal(2)">
+                        <img src="picha/kult.png" alt="Путь Клана Мудрецов" class="guide-image">
+                        <h3 class="guide-name">Путь Клана Мудрецов</h3>
+                        <p class="guide-description">Групповое обучение в культе искателей знаний. Коллективная мудрость, обмен опытом и совместное преодоление трудностей.</p>
+                        <div class="guide-price"><span class="ancient-coin">🪙</span> 300 монет</div>
+                        <button class="buy-button">Следовать Пути</button>
+                    </div>
+                    
+                    <!-- ИСПЫТАНИЕ ЭКЗАМЕНА -->
+                    <div class="guide-card" onclick="openModal(3)">
+                        <img src="picha/lon.png" alt="Испытание Высшего Экзамена" class="guide-image">
+                        <h3 class="guide-name">Испытание Высшего Экзамена</h3>
+                        <p class="guide-description">Интенсивная подготовка к решающему испытанию. Стратегии, тактики и древние методы преодоления экзаменационных трудностей.</p>
+                        <div class="guide-price"><span class="ancient-coin">🪙</span> 1100 монет</div>
+                        <button class="buy-button">Следовать Пути</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">×</button>
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalProductName"></h3>
+            </div>
+            
+            <!-- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ -->
+            <div class="carousel-container">
+                <div class="carousel-images" id="carouselImages">
+                    <!-- Изображения будут добавлены динамически -->
+                </div>
+                <button class="carousel-nav prev" onclick="changeSlide(-1)">‹</button>
+                <button class="carousel-nav next" onclick="changeSlide(1)">›</button>
+            </div>
+            
+            <div class="modal-description" id="modalProductDescription"></div>
+            <div class="modal-price" id="modalProductPrice"></div>
+            <button class="modal-contact-button" onclick="contactSeller()">Связаться с Драконом</button>
+        </div>
+    </div>
+
     <script>
+        // ДАННЫЕ ПУТЕШЕСТВИЙ
+        const journeys = [
+            {
+                name: "Путь Одинокого Странника",
+                description: "Индивидуальное путешествие к мастерству в математике. Каждый ученик получает персональный план обучения, разработанный Драконом-Наставником с учетом его сильных и слабых сторон. Занятия проходят в спокойной атмосфере, где каждый вопрос имеет значение, а каждая победа отмечается. Включает 10 занятий по 90 минут, регулярные пробные экзамены, домашние задания с подробной проверкой и стратегию достижения целей.",
+                price: "700 монет",
+                images: ["picha/dragon.png", "picha/ragon.png"]
+            },
+            {
+                name: "Путешествие Родственных Душ",
+                description: "Обучение в паре с другом, братом, сестрой или другим родным человеком. Этот путь основан на принципе взаимного обучения и поддержки. Дракон-Наставник создает уникальную программу, учитывающую уровень и цели обоих учеников. Совместное преодоление трудностей укрепляет не только знания, но и связи между учениками. Включает 10 совместных занятий по 90 минут, индивидуальные задания и совместные проекты.",
+                price: "500 монет",
+                images: ["picha/on.png", "picha/agon.png"]
+            },
+            {
+                name: "Путь Клана Мудрецов",
+                description: "Групповое обучение в культе искателей математической мудрости. Культ состоит из 4-6 учеников, объединенных общей целью. Коллективный обмен энергией и идеями, здоровая конкуренция создают уникальную атмосферу для роста. Дракон-Наставник выступает как проводник, направляющий культ к просветлению. Включает 10 групповых занятий по 90 минут, командные задания, индивидуальные консультации и ритуалы мудрости.",
+                price: "300 монет",
+                images: ["picha/kult.png", "picha/gon.png"]
+            },
+            {
+                name: "Испытание Высшего Экзамена",
+                description: "Интенсивная подготовка к решающему экзаменационному испытанию. Этот путь предназначен для тех, кто стоит на пороге важнейшего экзамена. Дракон-Наставник передает древние методы преодоления стресса, стратегии решения задач и тактики управления временем. Программа включает 10 интенсивных занятий, полные пробные экзамены в условиях, приближенных к реальным, и психологическую подготовку к испытанию.",
+                price: "1100 монет",
+                images: ["picha/lon.png", "picha/son.png"]
+            }
+        ];
+        
+        let currentSlide = 0;
+        let currentJourneyIndex = 0;
+        
         // Создание магических частиц при клике
         document.addEventListener('click', function(e) {
             createMagicParticles(e.clientX, e.clientY);
@@ -602,7 +1307,6 @@
                 particle.style.top = y + 'px';
                 document.body.appendChild(particle);
                 
-                // Анимация частицы
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 30 + Math.random() * 70;
                 const duration = 0.4 + Math.random() * 0.8;
@@ -621,7 +1325,6 @@
                     easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
                 });
                 
-                // Удаление частицы после анимации
                 setTimeout(() => {
                     particle.remove();
                 }, duration * 1000);
@@ -715,7 +1418,6 @@
                 }, index * 150);
             });
             
-            // Появление заголовка
             const header = document.querySelector('.dragon-header');
             header.style.opacity = '0';
             header.style.transform = 'translateY(20px)';
@@ -726,29 +1428,131 @@
             }, 200);
         });
         
-        // Ensure the page is scrollable on all devices
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add touch scrolling support for mobile
-            let touchStartY = 0;
-            let touchEndY = 0;
+        // ФУНКЦИИ ДЛЯ РАБОТЫ С МОДАЛЬНЫМ ОКНОМ И КАРУСЕЛЬЮ
+        function openModal(journeyIndex) {
+            currentJourneyIndex = journeyIndex;
+            const journey = journeys[journeyIndex];
             
-            document.body.addEventListener('touchstart', function(e) {
-                touchStartY = e.touches[0].clientY;
+            document.getElementById('modalProductName').textContent = journey.name;
+            document.getElementById('modalProductDescription').textContent = journey.description;
+            document.getElementById('modalProductPrice').innerHTML = `<span class="ancient-coin">🪙</span> ${journey.price}`;
+            
+            const carouselImages = document.getElementById('carouselImages');
+            carouselImages.innerHTML = '';
+            currentSlide = 0;
+            
+            journey.images.forEach((image, index) => {
+                const imgDiv = document.createElement('div');
+                imgDiv.className = 'carousel-image';
+                if (image.trim().startsWith('http') || image.includes('/')) {
+                    const img = document.createElement('img');
+                    img.src = image;
+                    img.alt = 'Изображение курса';
+                    imgDiv.appendChild(img);
+                } else {
+                    imgDiv.textContent = image;
+                }
+                carouselImages.appendChild(imgDiv);
+            });
+            
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function changeSlide(direction) {
+            const carousel = document.getElementById('carouselImages');
+            const totalSlides = journeys[currentJourneyIndex].images.length;
+            
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        
+        // 🔗 ГЛАВНАЯ ФУНКЦИЯ СВЯЗИ — ОТКРЫВАЕТ ВАШУ СТРАНИЦУ ВКОНТАКТЕ
+        function contactSeller() {
+            window.open('https://vk.com/id57195205', '_blank');
+        }
+        
+        // Закрытие модального окна по клику вне его содержимого
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Закрытие модального окна по нажатию Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('productModal').classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // Управление каруселью стрелками
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('productModal').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeSlide(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeSlide(1);
+                }
+            }
+        });
+        
+        // Поддержка прокрутки на мобильных устройствах
+        document.addEventListener('DOMContentLoaded', function() {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.getElementById('productModal').addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
             }, { passive: true });
             
-            document.body.addEventListener('touchend', function(e) {
-                touchEndY = e.changedTouches[0].clientY;
-                const touchDiff = touchStartY - touchEndY;
+            document.getElementById('productModal').addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const touchDiff = touchStartX - touchEndX;
                 
-                // Scroll the page if user swipes vertically
-                if (Math.abs(touchDiff) > 30) {
-                    window.scrollBy(0, touchDiff);
+                if (Math.abs(touchDiff) > 50) {
+                    if (touchDiff > 0) {
+                        changeSlide(1);
+                    } else {
+                        changeSlide(-1);
+                    }
                 }
             }, { passive: true });
+            
+            // Обновление активного пункта навигации при скролле
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('div[id]');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
 </html>
+
+
 
 
 

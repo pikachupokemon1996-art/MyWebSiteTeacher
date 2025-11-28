@@ -6,17 +6,14 @@
     <title>Дракон-Наставник | Математика</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         html {
             scroll-behavior: smooth;
         }
-        
         body {
             background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             min-height: 100vh;
@@ -25,7 +22,6 @@
             position: relative;
             padding: 0;
         }
-        
         body::before {
             content: '';
             position: fixed;
@@ -40,7 +36,6 @@
             pointer-events: none;
             z-index: 0;
         }
-        
         /* ФИКСИРОВАННАЯ НАВИГАЦИЯ */
         .navbar {
             position: fixed;
@@ -54,16 +49,14 @@
             padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-        
         .nav-container {
             max-width: 920px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
-        
         .nav-logo {
             font-size: 1.8rem;
             font-weight: 800;
@@ -71,20 +64,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-right: 40px;
             font-family: 'Playfair Display', serif;
         }
-        
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             list-style: none;
         }
-        
         .nav-item {
             position: relative;
         }
-        
         .nav-link {
             color: #e0e0ff;
             text-decoration: none;
@@ -95,12 +84,10 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
         .nav-link:hover {
             color: #ffd700;
             transform: translateY(-2px);
         }
-        
         .nav-link::after {
             content: '';
             position: absolute;
@@ -111,20 +98,34 @@
             background: linear-gradient(90deg, #8a2be2, #ffd700);
             transition: width 0.3s ease;
         }
-        
         .nav-link:hover::after {
             width: 100%;
         }
-        
         .nav-link.active {
             color: #ffd700;
             font-weight: 600;
         }
-        
         .nav-link.active::after {
             width: 100%;
         }
-        
+
+        /* Гамбургер-меню */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 28px;
+            height: 21px;
+            justify-content: space-between;
+        }
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
         .scroll-container {
             position: relative;
             max-width: 920px;
@@ -140,12 +141,10 @@
             margin-top: 100px;
             margin-bottom: 40px;
         }
-        
         .scroll-container:hover {
             transform: scale(1.02);
             box-shadow: 0 0 80px rgba(138, 43, 226, 0.8);
         }
-        
         .scroll-border {
             position: absolute;
             top: -25px;
@@ -158,7 +157,6 @@
             z-index: 20;
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
         }
-        
         .scroll-content {
             position: relative;
             padding: 40px;
@@ -169,13 +167,11 @@
             background: url("image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238a2be2' fill-opacity='0.02'%3E%3Cpath d='M40,20 L60,40 L40,60 L20,40 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             min-height: 80vh;
         }
-        
         .dragon-header {
             text-align: center;
             margin-bottom: 30px;
             position: relative;
         }
-        
         .dragon-symbol {
             font-size: 3.5rem;
             margin-bottom: 15px;
@@ -184,11 +180,9 @@
             cursor: pointer;
             transition: transform 0.5s ease;
         }
-        
         .dragon-symbol:hover {
             transform: scale(1.2) rotate(10deg);
         }
-        
         .dragon-title {
             font-size: 2.8rem;
             font-weight: 800;
@@ -202,7 +196,6 @@
             background-clip: text;
             animation: gradientShift 4s ease-in-out infinite;
         }
-        
         .ancient-motto {
             font-size: 1.2rem;
             font-style: italic;
@@ -213,7 +206,6 @@
             color: #c5c5ff;
             font-weight: 300;
         }
-        
         /* СЕКЦИЯ НАСТАВНИКА-ДРАКОНА */
         .master-section {
             background: linear-gradient(135deg, rgba(34, 28, 47, 0.8) 0%, rgba(26, 22, 37, 0.85) 100%);
@@ -225,12 +217,10 @@
             overflow: hidden;
             backdrop-filter: blur(5px);
         }
-        
         .master-header {
             text-align: center;
             margin-bottom: 25px;
         }
-        
         .master-title {
             font-size: 2rem;
             color: #ffd700;
@@ -242,19 +232,16 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
         .master-subtitle {
             color: #c5c5ff;
             font-style: italic;
             font-size: 1.1rem;
         }
-        
         .master-content {
             display: flex;
             gap: 30px;
             align-items: center;
         }
-        
         .master-image-container {
             flex: 0 0 220px;
             height: 280px;
@@ -264,17 +251,14 @@
             position: relative;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
-        
         .master-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
         .master-info {
             flex: 1;
         }
-        
         .master-description {
             font-size: 1.1rem;
             line-height: 1.7;
@@ -282,7 +266,6 @@
             margin-bottom: 20px;
             text-align: justify;
         }
-        
         .master-credentials {
             background: rgba(138, 43, 226, 0.15);
             border-left: 3px solid #8a2be2;
@@ -292,11 +275,9 @@
             line-height: 1.6;
             color: #d0d0ff;
         }
-        
         .teachings {
             margin: 30px 0;
         }
-        
         .teachings-title {
             font-size: 2rem;
             text-align: center;
@@ -310,11 +291,9 @@
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
-        
         .wisdom-list {
             list-style: none;
         }
-        
         .wisdom-item-1 {
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.15) 0%, rgba(75, 0, 130, 0.2) 100%);
             border: 1px solid #8a2be2;
@@ -327,7 +306,6 @@
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
         }
-        
         .wisdom-item-2 {
             background: linear-gradient(135deg, rgba(255, 105, 180, 0.15) 0%, rgba(220, 20, 60, 0.2) 100%);
             border: 1px solid #ff69b4;
@@ -340,7 +318,6 @@
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
         }
-        
         .wisdom-item-3 {
             background: linear-gradient(135deg, rgba(50, 205, 50, 0.15) 0%, rgba(34, 139, 34, 0.2) 100%);
             border: 1px solid #32cd32;
@@ -353,7 +330,6 @@
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
         }
-        
         .wisdom-item-4 {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(218, 165, 32, 0.2) 100%);
             border: 1px solid #ffd700;
@@ -366,35 +342,30 @@
             transition: all 0.4s ease;
             backdrop-filter: blur(5px);
         }
-        
         .wisdom-item-1:hover {
             transform: translateX(8px);
             border-color: #8a2be2;
             box-shadow: 0 6px 20px rgba(138, 43, 226, 0.3);
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.25) 0%, rgba(75, 0, 130, 0.3) 100%);
         }
-        
         .wisdom-item-2:hover {
             transform: translateX(8px);
             border-color: #ff69b4;
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.3);
             background: linear-gradient(135deg, rgba(255, 105, 180, 0.25) 0%, rgba(220, 20, 60, 0.3) 100%);
         }
-        
         .wisdom-item-3:hover {
             transform: translateX(8px);
             border-color: #32cd32;
             box-shadow: 0 6px 20px rgba(50, 205, 50, 0.3);
             background: linear-gradient(135deg, rgba(50, 205, 50, 0.25) 0%, rgba(34, 139, 34, 0.3) 100%);
         }
-        
         .wisdom-item-4:hover {
             transform: translateX(8px);
             border-color: #ffd700;
             box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.25) 0%, rgba(218, 165, 32, 0.3) 100%);
         }
-        
         .wisdom-item h3 {
             font-size: 1.4rem;
             margin-bottom: 12px;
@@ -403,17 +374,14 @@
             font-weight: 700;
             transition: transform 0.3s ease;
         }
-        
         .wisdom-item-1 h3 { color: #8a2be2; }
         .wisdom-item-2 h3 { color: #ff69b4; }
         .wisdom-item-3 h3 { color: #32cd32; }
         .wisdom-item-4 h3 { color: #ffd700; }
-        
         .wisdom-item-1:hover h3 { color: #4a00e0; transform: translateX(4px); }
         .wisdom-item-2:hover h3 { color: #dc143c; transform: translateX(4px); }
         .wisdom-item-3:hover h3 { color: #228b22; transform: translateX(4px); }
         .wisdom-item-4:hover h3 { color: #daa520; transform: translateX(4px); }
-        
         .wisdom-item p {
             font-size: 1rem;
             line-height: 1.7;
@@ -422,12 +390,10 @@
             font-weight: 400;
             transition: color 0.3s ease;
         }
-        
         .wisdom-item-1:hover p { color: #ffffff; }
         .wisdom-item-2:hover p { color: #ffffff; }
         .wisdom-item-3:hover p { color: #ffffff; }
         .wisdom-item-4:hover p { color: #000000; }
-        
         .contact-seal {
             text-align: center;
             margin-top: 25px;
@@ -439,13 +405,11 @@
             transition: all 0.4s ease;
             cursor: pointer;
         }
-        
         .contact-seal:hover {
             transform: scale(1.02);
             border-color: #4a00e0;
             box-shadow: 0 0 25px rgba(138, 43, 226, 0.4);
         }
-        
         .seal-title {
             font-size: 1.4rem;
             margin-bottom: 15px;
@@ -454,7 +418,6 @@
             font-weight: 700;
             text-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
         }
-        
         .contact-info {
             font-size: 1.1rem;
             line-height: 1.8;
@@ -462,16 +425,13 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
         }
-        
         .contact-info p {
             transition: color 0.3s ease, transform 0.2s ease;
         }
-        
         .contact-info p:hover {
             color: #ffffff;
             transform: scale(1.03);
         }
-        
         .ornament {
             position: absolute;
             font-size: 2rem;
@@ -480,17 +440,14 @@
             z-index: 5;
             transition: all 0.5s ease;
         }
-        
         .ornament:hover {
             opacity: 0.3;
             transform: scale(1.1);
         }
-        
         .ornament-1 { top: 40px; left: 30px; }
         .ornament-2 { top: 40px; right: 30px; transform: scaleX(-1); }
         .ornament-3 { bottom: 40px; left: 50px; }
         .ornament-4 { bottom: 40px; right: 50px; transform: scaleX(-1); }
-        
         .floating-scroll {
             position: absolute;
             animation: floatMystic 12s ease-in-out infinite;
@@ -499,11 +456,9 @@
             z-index: 3;
             color: #8a2be2;
         }
-        
         .scroll-1 { top: 80px; right: 60px; animation-delay: 0s; }
         .scroll-2 { bottom: 100px; left: 50px; animation-delay: 4s; }
         .scroll-3 { top: 160px; left: 40px; animation-delay: 8s; font-size: 2rem; }
-        
         .magic-particles {
             position: fixed;
             width: 4px;
@@ -514,14 +469,12 @@
             z-index: 1000;
             pointer-events: none;
         }
-        
         /* Секция путеводителя дракона */
         .guide-section {
             margin-top: 40px;
             padding-top: 30px;
             border-top: 1px solid rgba(138, 90, 205, 0.3);
         }
-        
         .guide-title {
             font-size: 2rem;
             text-align: center;
@@ -534,7 +487,6 @@
             font-weight: 700;
             text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
         }
-        
         .guide-subtitle {
             text-align: center;
             font-size: 1.1rem;
@@ -542,14 +494,12 @@
             margin-bottom: 30px;
             font-style: italic;
         }
-        
         .guide-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-top: 20px;
         }
-        
         .guide-card {
             background: linear-gradient(135deg, rgba(34, 28, 47, 0.9) 0%, rgba(26, 22, 37, 0.95) 100%);
             border: 2px solid #8a5a2a;
@@ -562,13 +512,11 @@
             backdrop-filter: blur(3px);
             text-align: center;
         }
-        
         .guide-card:hover {
             transform: translateY(-5px);
             border-color: #d4af37;
             box-shadow: 0 8px 25px rgba(138, 90, 42, 0.3);
         }
-        
         .guide-image {
             width: 100%;
             height: 180px;
@@ -576,7 +524,6 @@
             border-radius: 10px;
             margin-bottom: 15px;
         }
-        
         .guide-name {
             font-size: 1.3rem;
             color: #d4af37;
@@ -584,7 +531,6 @@
             font-family: 'Playfair Display', serif;
             font-weight: 600;
         }
-        
         .guide-description {
             font-size: 0.95rem;
             line-height: 1.5;
@@ -592,7 +538,6 @@
             margin-bottom: 15px;
             min-height: 60px;
         }
-        
         .guide-price {
             font-size: 1.4rem;
             font-weight: 700;
@@ -603,11 +548,9 @@
             justify-content: center;
             gap: 5px;
         }
-        
         .ancient-coin {
             font-size: 1.2rem;
         }
-        
         .buy-button {
             background: linear-gradient(45deg, #8a2be2, #4a00e0);
             color: white;
@@ -620,12 +563,10 @@
             transition: all 0.3s ease;
             width: 100%;
         }
-        
         .buy-button:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
         }
-        
         /* Модальное окно */
         .modal {
             position: fixed;
@@ -639,11 +580,9 @@
             align-items: center;
             z-index: 2000;
         }
-        
         .modal.active {
             display: flex;
         }
-        
         .modal-content {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border: 3px solid #8a2be2;
@@ -655,7 +594,6 @@
             position: relative;
             padding: 30px;
         }
-        
         .close-modal {
             position: absolute;
             top: 15px;
@@ -672,19 +610,16 @@
             align-items: center;
             justify-content: center;
         }
-        
         .modal-header {
             text-align: center;
             margin-bottom: 25px;
         }
-        
         .modal-title {
             font-size: 2rem;
             color: #ffd700;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
-        
         .carousel-container {
             position: relative;
             margin-bottom: 25px;
@@ -692,13 +627,11 @@
             overflow: hidden;
             height: 300px;
         }
-        
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease;
             height: 100%;
         }
-        
         .carousel-image {
             min-width: 100%;
             height: 100%;
@@ -706,13 +639,11 @@
             align-items: center;
             justify-content: center;
         }
-        
         .carousel-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
         .carousel-nav {
             position: absolute;
             top: 50%;
@@ -728,15 +659,12 @@
             align-items: center;
             justify-content: center;
         }
-        
         .carousel-nav.prev {
             left: 10px;
         }
-        
         .carousel-nav.next {
             right: 10px;
         }
-        
         .modal-description {
             font-size: 1.1rem;
             line-height: 1.7;
@@ -744,7 +672,6 @@
             margin-bottom: 20px;
             text-align: justify;
         }
-        
         .modal-price {
             font-size: 1.8rem;
             font-weight: 700;
@@ -756,7 +683,6 @@
             justify-content: center;
             gap: 10px;
         }
-        
         .modal-contact-button {
             background: linear-gradient(45deg, #ff69b4, #8a2be2);
             color: white;
@@ -772,34 +698,58 @@
             margin: 0 auto;
             width: 200px;
         }
-        
         .modal-contact-button:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
         }
-        
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .navbar {
-                padding: 12px 0;
+                padding: 12px 15px;
             }
             
-            .nav-container {
-                padding: 0 15px;
-            }
-            
-            .nav-logo {
-                font-size: 1.5rem;
-                margin-right: 20px;
+            .hamburger {
+                display: flex;
             }
             
             .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
                 gap: 15px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+                z-index: 2999;
+            }
+            
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             }
             
             .nav-link {
-                font-size: 1rem;
-                padding: 6px 0;
+                font-size: 1.1rem;
+                padding: 10px 20px;
+                color: #e0e0ff;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-link:hover {
+                color: #ffd700;
+                background: rgba(138, 43, 226, 0.2);
+                transform: none;
+            }
+            
+            .nav-link::after {
+                display: none;
             }
             
             .scroll-container {
@@ -807,211 +757,185 @@
                 margin: 80px 10px 20px 10px;
                 border-width: 10px;
             }
-            
             .scroll-content {
                 padding: 25px;
                 min-height: auto;
             }
-            
             .master-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .master-image-container {
                 flex: none;
                 width: 200px;
                 height: 240px;
                 margin: 0 auto 20px auto;
             }
-            
             .dragon-symbol {
                 font-size: 2.8rem;
             }
-            
             .dragon-title {
                 font-size: 2.2rem;
             }
-            
             .ancient-motto {
                 font-size: 1rem;
             }
-            
             .master-title {
                 font-size: 1.6rem;
             }
-            
             .master-description {
                 font-size: 1rem;
             }
-            
             .teachings-title {
                 font-size: 1.6rem;
             }
-            
             .wisdom-item {
                 padding: 18px;
                 margin: 12px 0;
             }
-            
             .wisdom-item h3 {
                 font-size: 1.2rem;
             }
-            
             .wisdom-item p {
                 font-size: 0.95rem;
             }
-            
             .contact-seal {
                 margin-top: 20px;
                 padding: 16px;
             }
-            
             .seal-title {
                 font-size: 1.2rem;
             }
-            
             .contact-info {
                 font-size: 1rem;
             }
-            
             .ornament {
                 font-size: 1.5rem;
             }
-            
             .floating-scroll {
                 font-size: 2rem;
             }
-            
             .guide-title {
                 font-size: 1.6rem;
             }
-            
             .modal-content {
                 padding: 20px;
             }
-            
             .carousel-container {
                 height: 250px;
+            }
+
+            /* Отступы для якорных ссылок */
+            #home, #master, #teachings, #guide, #contact {
+                scroll-margin-top: 80px;
             }
         }
         
         @media (max-width: 480px) {
             .nav-logo {
-                font-size: 1.3rem;
-                margin-right: 15px;
-            }
-            
-            .nav-menu {
-                gap: 10px;
+                font-size: 1.5rem;
             }
             
             .nav-link {
-                font-size: 0.9rem;
+                font-size: 1rem;
+                padding: 8px 15px;
             }
             
             .scroll-container {
                 margin-top: 80px;
                 margin: 70px 5px 15px 5px;
             }
-            
             .master-image-container {
                 width: 160px;
                 height: 200px;
             }
-            
             body {
                 padding: 0;
             }
-            
             .dragon-symbol {
                 font-size: 2.2rem;
             }
-            
             .dragon-title {
                 font-size: 1.8rem;
                 letter-spacing: 0.5px;
             }
-            
             .ancient-motto {
                 font-size: 0.9rem;
             }
-            
             .master-title {
                 font-size: 1.4rem;
             }
-            
             .teachings-title {
                 font-size: 1.4rem;
             }
-            
             .wisdom-item {
                 padding: 15px;
                 margin: 10px 0;
             }
-            
             .wisdom-item h3 {
                 font-size: 1.1rem;
             }
-            
             .wisdom-item p {
                 font-size: 0.9rem;
                 line-height: 1.6;
             }
-            
             .contact-info {
                 font-size: 0.95rem;
             }
-            
             .ornament {
                 font-size: 1.2rem;
                 opacity: 0.1;
             }
-            
             .floating-scroll {
                 font-size: 1.6rem;
             }
-            
             .guide-title {
                 font-size: 1.4rem;
             }
-            
             .guide-image {
                 height: 150px;
             }
-            
             .guide-name {
                 font-size: 1.1rem;
             }
-            
             .guide-price {
                 font-size: 1.2rem;
             }
-            
             .modal-content {
                 width: 95%;
                 padding: 15px;
             }
-            
             .modal-title {
                 font-size: 1.6rem;
             }
-            
             .carousel-container {
                 height: 200px;
             }
-            
             .modal-price {
                 font-size: 1.5rem;
             }
-            
             .modal-contact-button {
                 width: 180px;
                 padding: 12px 25px;
                 font-size: 1rem;
             }
+
+            #home, #master, #teachings, #guide, #contact {
+                scroll-margin-top: 75px;
+            }
         }
-        
+
+        /* Анимация гамбургера */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
         @keyframes pulseGlow {
             0% { 
                 text-shadow: 0 0 12px rgba(138, 43, 226, 0.4); 
@@ -1022,13 +946,11 @@
                 transform: scale(1.03);
             }
         }
-        
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        
         @keyframes floatMystic {
             0%, 100% {
                 transform: translateY(0px) rotate(0deg);
@@ -1043,7 +965,6 @@
                 transform: translateY(-15px) rotate(-4deg);
             }
         }
-        
         .math-symbols {
             position: absolute;
             font-size: 1rem;
@@ -1052,11 +973,9 @@
             font-family: monospace;
             font-weight: bold;
         }
-        
         .symbol-1 { top: 60px; left: 80px; }
         .symbol-2 { bottom: 80px; right: 70px; }
         .symbol-3 { top: 200px; right: 100px; }
-        
         /* ID для якорных ссылок */
         #home { scroll-margin-top: 80px; }
         #master { scroll-margin-top: 80px; }
@@ -1069,8 +988,13 @@
     <!-- ФИКСИРОВАННАЯ НАВИГАЦИОННАЯ ПАНЕЛЬ -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">🐉 Дракон</div>
-            <ul class="nav-menu">
+            <div class="nav-logo">🐉</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link active" data-section="home">Главная</a>
                 </li>
@@ -1089,24 +1013,19 @@
             </ul>
         </div>
     </nav>
-
     <div class="scroll-container" id="scrollContainer">
         <div class="scroll-border"></div>
-        
         <!-- Декоративные элементы -->
         <div class="ornament ornament-1">🐉</div>
         <div class="ornament ornament-2">🐉</div>
         <div class="ornament ornament-3">🐉</div>
         <div class="ornament ornament-4">🐉</div>
-        
         <div class="floating-scroll scroll-1">✨</div>
         <div class="floating-scroll scroll-2">🏮</div>
         <div class="floating-scroll scroll-3">🏯</div>
-        
         <div class="math-symbols symbol-1">∫</div>
         <div class="math-symbols symbol-2">∑</div>
         <div class="math-symbols symbol-3">π</div>
-        
         <div class="scroll-content">
             <!-- ГЛАВНАЯ СЕКЦИЯ -->
             <div id="home" class="dragon-header">
@@ -1114,7 +1033,6 @@
                 <h1 class="dragon-title">ДРАКОН-НАСТАВНИК</h1>
                 <p class="ancient-motto">"Мудрость Востока в служении точным наукам"</p>
             </div>
-            
             <!-- СЕКЦИЯ НАСТАВНИКА-ДРАКОНА -->
             <div id="master" class="master-section">
                 <div class="master-header">
@@ -1141,7 +1059,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- УЧЕНИЯ ДРАКОНА -->
             <div id="teachings" class="teachings">
                 <h2 class="teachings-title">УЧЕНИЯ ДРАКОНА</h2>
@@ -1164,7 +1081,6 @@
                     </li>
                 </ul>
             </div>
-            
             <!-- КОНТАКТНАЯ ИНФОРМАЦИЯ -->
             <div id="contact" class="contact-seal" id="contactSeal" onclick="contactSeller()">
                 <h3 class="seal-title">Печать Контакта</h3>
@@ -1174,7 +1090,6 @@
                     <p>🏯 Онлайн-павильон и земли Москвы</p>
                 </div>
             </div>
-            
             <!-- ПУТЕВОДИТЕЛЬ ДРАКОНА -->
             <div id="guide" class="guide-section">
                 <h2 class="guide-title">ПУТЕВОДИТЕЛЬ ДРАКОНА</h2>
@@ -1188,7 +1103,6 @@
                         <div class="guide-price"><span class="ancient-coin">🪙</span> 700 монет</div>
                         <button class="buy-button">Следовать Пути</button>
                     </div>
-                    
                     <!-- ПУТЕШЕСТВИЕ ВДВОЁМ -->
                     <div class="guide-card" onclick="openModal(1)">
                         <img src="images/on.png" alt="Путешествие Родственных Душ" class="guide-image">
@@ -1197,7 +1111,6 @@
                         <div class="guide-price"><span class="ancient-coin">🪙</span> 500 монет</div>
                         <button class="buy-button">Следовать Пути</button>
                     </div>
-                    
                     <!-- ГРУППОВОЕ ПУТЕШЕСТВИЕ -->
                     <div class="guide-card" onclick="openModal(2)">
                         <img src="images/kult.png" alt="Путь Клана Мудрецов" class="guide-image">
@@ -1206,7 +1119,6 @@
                         <div class="guide-price"><span class="ancient-coin">🪙</span> 300 монет</div>
                         <button class="buy-button">Следовать Пути</button>
                     </div>
-                    
                     <!-- ИСПЫТАНИЕ ЭКЗАМЕНА -->
                     <div class="guide-card" onclick="openModal(3)">
                         <img src="images/longo.png" alt="Испытание Высшего Экзамена" class="guide-image">
@@ -1219,7 +1131,6 @@
             </div>
         </div>
     </div>
-
     <!-- МОДАЛЬНОЕ ОКНО -->
     <div class="modal" id="productModal">
         <div class="modal-content">
@@ -1227,7 +1138,6 @@
             <div class="modal-header">
                 <h3 class="modal-title" id="modalProductName"></h3>
             </div>
-            
             <!-- КАРУСЕЛЬ ИЗОБРАЖЕНИЙ -->
             <div class="carousel-container">
                 <div class="carousel-images" id="carouselImages">
@@ -1236,13 +1146,11 @@
                 <button class="carousel-nav prev" onclick="changeSlide(-1)">‹</button>
                 <button class="carousel-nav next" onclick="changeSlide(1)">›</button>
             </div>
-            
             <div class="modal-description" id="modalProductDescription"></div>
             <div class="modal-price" id="modalProductPrice"></div>
             <button class="modal-contact-button" onclick="contactSeller()">Связаться с Драконом</button>
         </div>
     </div>
-
     <script>
         // ДАННЫЕ ПУТЕШЕСТВИЙ
         const journeys = [
@@ -1271,15 +1179,38 @@
                 images: ["images/longo.png", "images/son.png"]
             }
         ];
-        
         let currentSlide = 0;
         let currentJourneyIndex = 0;
-        
+
+        // Мобильное меню
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Закрытие меню при клике вне его области
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
         // Создание магических частиц при клике
         document.addEventListener('click', function(e) {
             createMagicParticles(e.clientX, e.clientY);
         });
-        
         // Создание магических частиц при наведении на дракона
         document.getElementById('dragonSymbol').addEventListener('mouseenter', function(e) {
             const rect = this.getBoundingClientRect();
@@ -1287,7 +1218,6 @@
             const y = rect.top + rect.height / 2;
             createMagicBurst(x, y);
         });
-        
         // Создание партиклов для печати контакта
         document.getElementById('contactSeal').addEventListener('mouseenter', function() {
             const rect = this.getBoundingClientRect();
@@ -1295,10 +1225,8 @@
             const centerY = rect.top + rect.height / 2;
             createContactParticles(centerX, centerY);
         });
-        
         function createMagicParticles(x, y) {
             const colors = ['#8a2be2', '#4a00e0', '#9370db', '#6a5acd'];
-            
             for (let i = 0; i < 6; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'magic-particles';
@@ -1306,11 +1234,9 @@
                 particle.style.left = x + 'px';
                 particle.style.top = y + 'px';
                 document.body.appendChild(particle);
-                
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 30 + Math.random() * 70;
                 const duration = 0.4 + Math.random() * 0.8;
-                
                 particle.animate([
                     { 
                         transform: 'translate(0, 0)', 
@@ -1324,16 +1250,13 @@
                     duration: duration * 1000,
                     easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
                 });
-                
                 setTimeout(() => {
                     particle.remove();
                 }, duration * 1000);
             }
         }
-        
         function createMagicBurst(x, y) {
             const colors = ['#8a2be2', '#ff69b4', '#4a00e0'];
-            
             for (let i = 0; i < 12; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'magic-particles';
@@ -1343,11 +1266,9 @@
                 particle.style.width = '5px';
                 particle.style.height = '5px';
                 document.body.appendChild(particle);
-                
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 50 + Math.random() * 90;
                 const duration = 0.6 + Math.random() * 1;
-                
                 particle.animate([
                     { 
                         transform: 'translate(0, 0)', 
@@ -1361,13 +1282,11 @@
                     duration: duration * 1000,
                     easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
                 });
-                
                 setTimeout(() => {
                     particle.remove();
                 }, duration * 1000);
             }
         }
-        
         function createContactParticles(x, y) {
             for (let i = 0; i < 10; i++) {
                 const particle = document.createElement('div');
@@ -1378,11 +1297,9 @@
                 particle.style.width = '4px';
                 particle.style.height = '4px';
                 document.body.appendChild(particle);
-                
                 const angle = (i * 36) * Math.PI / 180;
                 const distance = 40 + Math.random() * 30;
                 const duration = 0.8 + Math.random() * 0.4;
-                
                 particle.animate([
                     { 
                         transform: 'translate(0, 0)', 
@@ -1396,13 +1313,11 @@
                     duration: duration * 1000,
                     easing: 'ease-out'
                 });
-                
                 setTimeout(() => {
                     particle.remove();
                 }, duration * 1000);
             }
         }
-        
         // Анимация появления элементов при загрузке
         window.addEventListener('load', function() {
             const wisdomItems = document.querySelectorAll('.wisdom-item');
@@ -1417,7 +1332,6 @@
                     }, 100);
                 }, index * 150);
             });
-            
             const header = document.querySelector('.dragon-header');
             header.style.opacity = '0';
             header.style.transform = 'translateY(20px)';
@@ -1427,20 +1341,16 @@
                 header.style.transform = 'translateY(0)';
             }, 200);
         });
-        
         // ФУНКЦИИ ДЛЯ РАБОТЫ С МОДАЛЬНЫМ ОКНОМ И КАРУСЕЛЬЮ
         function openModal(journeyIndex) {
             currentJourneyIndex = journeyIndex;
             const journey = journeys[journeyIndex];
-            
             document.getElementById('modalProductName').textContent = journey.name;
             document.getElementById('modalProductDescription').textContent = journey.description;
             document.getElementById('modalProductPrice').innerHTML = `<span class="ancient-coin">🪙</span> ${journey.price}`;
-            
             const carouselImages = document.getElementById('carouselImages');
             carouselImages.innerHTML = '';
             currentSlide = 0;
-            
             journey.images.forEach((image, index) => {
                 const imgDiv = document.createElement('div');
                 imgDiv.className = 'carousel-image';
@@ -1454,43 +1364,35 @@
                 }
                 carouselImages.appendChild(imgDiv);
             });
-            
             document.getElementById('productModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
         function closeModal() {
             document.getElementById('productModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        
         function changeSlide(direction) {
             const carousel = document.getElementById('carouselImages');
             const totalSlides = journeys[currentJourneyIndex].images.length;
-            
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
-        
         // 🔗 ГЛАВНАЯ ФУНКЦИЯ СВЯЗИ — ОТКРЫВАЕТ ВАШУ СТРАНИЦУ ВКОНТАКТЕ
         function contactSeller() {
             window.open('https://vk.com/id57195205', '_blank');
         }
-        
         // Закрытие модального окна по клику вне его содержимого
         document.getElementById('productModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
-        
         // Закрытие модального окна по нажатию Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && document.getElementById('productModal').classList.contains('active')) {
                 closeModal();
             }
         });
-        
         // Управление каруселью стрелками
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('productModal').classList.contains('active')) {
@@ -1501,20 +1403,16 @@
                 }
             }
         });
-        
         // Поддержка прокрутки на мобильных устройствах
         document.addEventListener('DOMContentLoaded', function() {
             let touchStartX = 0;
             let touchEndX = 0;
-            
             document.getElementById('productModal').addEventListener('touchstart', function(e) {
                 touchStartX = e.changedTouches[0].screenX;
             }, { passive: true });
-            
             document.getElementById('productModal').addEventListener('touchend', function(e) {
                 touchEndX = e.changedTouches[0].screenX;
                 const touchDiff = touchStartX - touchEndX;
-                
                 if (Math.abs(touchDiff) > 50) {
                     if (touchDiff > 0) {
                         changeSlide(1);
@@ -1523,23 +1421,18 @@
                     }
                 }
             }, { passive: true });
-            
             // Обновление активного пункта навигации при скролле
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('div[id]');
-            
             window.addEventListener('scroll', function() {
                 let current = '';
-                
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
-                    
                     if (pageYOffset >= (sectionTop - 100)) {
                         current = section.getAttribute('id');
                     }
                 });
-                
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href').substring(1) === current) {
@@ -1551,7 +1444,6 @@
     </script>
 </body>
 </html>
-
 
 
 

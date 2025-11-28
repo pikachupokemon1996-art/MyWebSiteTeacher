@@ -54,7 +54,7 @@
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
         .nav-logo {
@@ -64,12 +64,11 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-right: 40px;
             font-family: 'Playfair Display', serif;
         }
         .nav-menu {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             list-style: none;
         }
         .nav-item {
@@ -109,6 +108,24 @@
         .nav-link.active::after {
             width: 100%;
         }
+
+        /* Гамбургер-меню */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 28px;
+            height: 21px;
+            justify-content: space-between;
+        }
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background: #ffd700;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
         .scroll-container {
             position: relative;
             max-width: 920px;
@@ -685,8 +702,9 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
         }
-        /* ИГРА: ИСПЫТАНИЕ ДРАКОНА */
-        .dragon-game-modal {
+
+        /* ИГРА: ЛОВЕЦ ДРАКОНОВ */
+        .dragon-catcher-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -697,80 +715,67 @@
             justify-content: center;
             align-items: center;
             z-index: 3500;
+            cursor: crosshair;
         }
-        .dragon-game-modal.active {
-            display: flex;
-        }
-        .dragon-status {
+        .game-ui {
             position: absolute;
             top: 20px;
             width: 100%;
             text-align: center;
             color: #ffd700;
-            font-size: 1.3rem;
-            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
             font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
         }
         .dragon-target {
             position: absolute;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             cursor: pointer;
             user-select: none;
         }
-        .question-screen {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(26, 26, 46, 0.95);
-            border: 2px solid #8a2be2;
-            border-radius: 20px;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            color: white;
-        }
-        .question-input {
-            width: 80%;
-            padding: 10px;
-            font-size: 1.1rem;
-            margin: 15px 0;
-            text-align: center;
-            border: 1px solid #8a2be2;
-            background: rgba(0,0,0,0.3);
-            color: white;
-            border-radius: 8px;
-        }
-        .game-btn {
-            background: linear-gradient(45deg, #ff69b4, #8a2be2);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 25px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-        }
+
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .navbar {
-                padding: 12px 0;
+                padding: 12px 15px;
             }
-            .nav-container {
-                padding: 0 15px;
-            }
-            .nav-logo {
-                font-size: 1.5rem;
-                margin-right: 20px;
+            .hamburger {
+                display: flex;
             }
             .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(26, 26, 46, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
                 gap: 15px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+                z-index: 2999;
+            }
+            .nav-menu.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             }
             .nav-link {
-                font-size: 1rem;
-                padding: 6px 0;
+                font-size: 1.1rem;
+                padding: 10px 20px;
+                color: #e0e0ff;
+                width: 100%;
+                text-align: center;
+            }
+            .nav-link:hover {
+                color: #ffd700;
+                background: rgba(138, 43, 226, 0.2);
+                transform: none;
+            }
+            .nav-link::after {
+                display: none;
             }
             .scroll-container {
                 margin-top: 90px;
@@ -844,17 +849,17 @@
             .carousel-container {
                 height: 250px;
             }
+            #home, #master, #teachings, #guide, #contact {
+                scroll-margin-top: 80px;
+            }
         }
         @media (max-width: 480px) {
             .nav-logo {
-                font-size: 1.3rem;
-                margin-right: 15px;
-            }
-            .nav-menu {
-                gap: 10px;
+                font-size: 1.5rem;
             }
             .nav-link {
-                font-size: 0.9rem;
+                font-size: 1rem;
+                padding: 8px 15px;
             }
             .scroll-container {
                 margin-top: 80px;
@@ -934,7 +939,22 @@
                 padding: 12px 25px;
                 font-size: 1rem;
             }
+            #home, #master, #teachings, #guide, #contact {
+                scroll-margin-top: 75px;
+            }
         }
+
+        /* Анимация гамбургера */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
         @keyframes pulseGlow {
             0% { 
                 text-shadow: 0 0 12px rgba(138, 43, 226, 0.4); 
@@ -987,8 +1007,13 @@
     <!-- ФИКСИРОВАННАЯ НАВИГАЦИОННАЯ ПАНЕЛЬ -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="nav-logo">🐉 Дракон</div>
-            <ul class="nav-menu">
+            <div class="nav-logo">🐉</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link active" data-section="home">Главная</a>
                 </li>
@@ -1088,11 +1113,13 @@
             <div id="guide" class="guide-section">
                 <h2 class="guide-title">ПУТЕВОДИТЕЛЬ ДРАКОНА</h2>
                 <p class="guide-subtitle">Выберите свой путь к просветлению в математике</p>
+                
                 <!-- КНОПКА ИГРЫ -->
-                <div onclick="startDragonGame()" style="text-align:center; padding:15px; background:linear-gradient(135deg, #8a2be2, #4a00e0); border:1px solid #ffd700; border-radius:12px; cursor:pointer; margin:20px 0; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);">
-                    <h3 style="color:#ffd700; font-family:'Playfair Display',serif; margin-bottom:8px; text-shadow: 0 0 8px rgba(0,0,0,0.6);">🐉 Испытание Дракона</h3>
-                    <p style="color:#e0e0ff; font-size:0.95rem; font-weight:500;">Поймай 10 драконов — ответь на 3 вопроса — получи 150 монет!</p>
+                <div onclick="openDragonGame()" style="text-align:center; padding:15px; background:linear-gradient(135deg, #8a2be2, #4a00e0); border:1px solid #ffd700; border-radius:12px; cursor:pointer; margin:20px 0; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);">
+                    <h3 style="color:#ffd700; font-family:'Playfair Display',serif; margin-bottom:8px; text-shadow: 0 0 8px rgba(0,0,0,0.6);">🐉 Ловец Драконов</h3>
+                    <p style="color:#e0e0ff; font-size:0.95rem; font-weight:500;">Поймай 10 драконов — получи 150 монет!</p>
                 </div>
+                
                 <div class="guide-grid">
                     <!-- ПУТЬ ОДИНОКИ СТРАННИКА -->
                     <div class="guide-card" onclick="openModal(0)">
@@ -1150,11 +1177,13 @@
             <button class="modal-contact-button" onclick="contactSeller()">Связаться с Драконом</button>
         </div>
     </div>
+
     <!-- МОДАЛЬНОЕ ОКНО ИГРЫ -->
-    <div class="dragon-game-modal" id="dragonGameModal">
-        <div class="dragon-status" id="gameStatus">Поймай 10 драконов</div>
+    <div class="dragon-catcher-modal" id="dragonCatcherModal">
+        <div class="game-ui">Поймано: <span id="caughtCount">0</span>/10</div>
         <div id="gameArea"></div>
     </div>
+
     <script>
         // ДАННЫЕ ПУТЕШЕСТВИЙ
         const journeys = [
@@ -1185,18 +1214,40 @@
         ];
         let currentSlide = 0;
         let currentJourneyIndex = 0;
+
+        // Мобильное меню
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
         // Создание магических частиц при клике
         document.addEventListener('click', function(e) {
             createMagicParticles(e.clientX, e.clientY);
         });
-        // Создание магических частиц при наведении на дракона
         document.getElementById('dragonSymbol').addEventListener('mouseenter', function(e) {
             const rect = this.getBoundingClientRect();
             const x = rect.left + rect.width / 2;
             const y = rect.top + rect.height / 2;
             createMagicBurst(x, y);
         });
-        // Создание партиклов для печати контакта
         document.getElementById('contactSeal').addEventListener('mouseenter', function() {
             const rect = this.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
@@ -1296,7 +1347,6 @@
                 }, duration * 1000);
             }
         }
-        // Анимация появления элементов при загрузке
         window.addEventListener('load', function() {
             const wisdomItems = document.querySelectorAll('.wisdom-item');
             wisdomItems.forEach((item, index) => {
@@ -1319,7 +1369,6 @@
                 header.style.transform = 'translateY(0)';
             }, 200);
         });
-        // ФУНКЦИИ ДЛЯ РАБОТЫ С МОДАЛЬНЫМ ОКНОМ И КАРУСЕЛЬЮ
         function openModal(journeyIndex) {
             currentJourneyIndex = journeyIndex;
             const journey = journeys[journeyIndex];
@@ -1355,23 +1404,19 @@
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
-        // 🔗 ГЛАВНАЯ ФУНКЦИЯ СВЯЗИ — ОТКРЫВАЕТ ВАШУ СТРАНИЦУ ВКОНТАКТЕ
         function contactSeller() {
             window.open('https://vk.com/id57195205', '_blank');
         }
-        // Закрытие модального окна по клику вне его содержимого
         document.getElementById('productModal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeModal();
             }
         });
-        // Закрытие модального окна по нажатию Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && document.getElementById('productModal').classList.contains('active')) {
                 closeModal();
             }
         });
-        // Управление каруселью стрелками
         document.addEventListener('keydown', function(e) {
             if (document.getElementById('productModal').classList.contains('active')) {
                 if (e.key === 'ArrowLeft') {
@@ -1381,7 +1426,6 @@
                 }
             }
         });
-        // Поддержка прокрутки на мобильных устройствах
         document.addEventListener('DOMContentLoaded', function() {
             let touchStartX = 0;
             let touchEndX = 0;
@@ -1399,7 +1443,6 @@
                     }
                 }
             }, { passive: true });
-            // Обновление активного пункта навигации при скролле
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('div[id]');
             window.addEventListener('scroll', function() {
@@ -1419,119 +1462,51 @@
                 });
             });
         });
-        // ============ ИГРА: ИСПЫТАНИЕ ДРАКОНА ============
-        let caught = 0;
-        let gameActive = true;
-        let dragonElements = [];
-        let currentQuestion = 0;
-        // Три простых вопроса
-        const QUESTIONS = [
-            { text: "Чему равен корень из 144?", answer: 12 },
-            { text: "Сколько градусов в прямом угле?", answer: 90 },
-            { text: "Вычисли: 7² – 5²", answer: 24 }
-        ];
-        function startDragonGame() {
-            caught = 0;
-            gameActive = true;
-            dragonElements = [];
-            currentQuestion = 0;
-            document.getElementById('dragonGameModal').classList.add('active');
-            loadDragons();
-        }
-        function loadDragons() {
-            const area = document.getElementById('gameArea');
-            area.innerHTML = '<div class="dragon-status">Поймай 10 драконов</div>';
-            for (let i = 0; i < 10; i++) {
-                setTimeout(() => {
-                    if (gameActive) createDragon(area);
-                }, i * 400);
+
+        // ============ ИГРА: ЛОВЕЦ ДРАКОНОВ ============
+        function openDragonGame() {
+            const modal = document.getElementById('dragonCatcherModal');
+            const gameArea = document.getElementById('gameArea');
+            gameArea.innerHTML = '';
+            let caught = 0;
+            const total = 10;
+            document.getElementById('caughtCount').textContent = '0';
+            modal.style.display = 'flex';
+
+            // Создаём 10 драконов
+            for (let i = 0; i < total; i++) {
+                const dragon = document.createElement('div');
+                dragon.className = 'dragon-target';
+                dragon.textContent = '🐉';
+                dragon.style.left = Math.random() * 85 + 5 + '%';
+                dragon.style.top = Math.random() * 70 + 10 + '%';
+                dragon.onclick = () => {
+                    if (dragon.style.opacity !== '0') {
+                        dragon.style.opacity = '0';
+                        dragon.style.transform = 'scale(1.3)';
+                        caught++;
+                        document.getElementById('caughtCount').textContent = caught;
+                        if (caught >= total) {
+                            setTimeout(() => {
+                                alert('🏆 Поздравляю! Ты поймал всех драконов и получаешь 150 монет!');
+                                modal.style.display = 'none';
+                            }, 500);
+                        }
+                    }
+                };
+                gameArea.appendChild(dragon);
             }
         }
-        function createDragon(container) {
-            const dragon = document.createElement('div');
-            dragon.className = 'dragon-target';
-            dragon.textContent = '🐉';
-            dragon.style.left = Math.random() * 85 + 5 + '%';
-            dragon.style.top = Math.random() * 70 + 10 + '%';
-            // Очень медленное движение (уровень 2)
-            const dx = (Math.random() - 0.5) * 0.3;
-            const dy = (Math.random() - 0.5) * 0.3;
-            dragon.onclick = () => {
-                if (gameActive && dragon.style.opacity !== '0') {
-                    dragon.style.opacity = '0';
-                    dragon.style.transform = 'scale(1.3)';
-                    caught++;
-                    if (caught >= 10) showQuestion(0);
-                }
-            };
-            container.appendChild(dragon);
-            dragonElements.push({ el: dragon, x: parseFloat(dragon.style.left), y: parseFloat(dragon.style.top), dx, dy });
-            moveDragons();
-        }
-        function moveDragons() {
-            if (!gameActive) return;
-            dragonElements.forEach(d => {
-                if (d.el.style.opacity === '0') return;
-                d.x += d.dx;
-                d.y += d.dy;
-                if (d.x <= 0 || d.x >= 90) d.dx *= -1;
-                if (d.y <= 0 || d.y >= 80) d.dy *= -1;
-                d.el.style.left = d.x + '%';
-                d.el.style.top = d.y + '%';
-            });
-            requestAnimationFrame(moveDragons);
-        }
-        function showQuestion(qIndex) {
-            const area = document.getElementById('gameArea');
-            const q = QUESTIONS[qIndex];
-            area.innerHTML = `
-                <div class="question-screen">
-                    <div style="font-size:2.5rem; margin-bottom:20px;">❓</div>
-                    <h3 style="color:#ffd700; font-family:'Playfair Display',serif; margin-bottom:20px;">Вопрос ${qIndex + 1} из 3</h3>
-                    <p style="font-size:1.2rem; margin-bottom:20px;">${q.text}</p>
-                    <input type="number" id="answerInput" class="question-input" placeholder="Ваш ответ" autofocus>
-                    <br>
-                    <button class="game-btn" onclick="checkAnswer(${q.answer}, ${qIndex})">Отправить</button>
-                </div>
-            `;
-        }
-        function checkAnswer(correct, qIndex) {
-            const userAns = parseInt(document.getElementById('answerInput').value);
-            if (userAns === correct) {
-                if (qIndex < 2) {
-                    setTimeout(() => showQuestion(qIndex + 1), 1000);
-                } else {
-                    winGame();
-                }
-            } else {
-                alert('❌ Неверно! Попробуй снова.');
-            }
-        }
-        function winGame() {
-            gameActive = false;
-            const area = document.getElementById('gameArea');
-            area.innerHTML = `
-                <div class="question-screen">
-                    <div style="font-size:3.5rem; margin:15px;">🏆</div>
-                    <h2 style="color:#ffd700; font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:20px;">Победа!</h2>
-                    <p style="color:#e0e0ff; margin-bottom:20px;">Ты ответил на все вопросы правильно!</p>
-                    <div style="font-size:2rem; color:#ffd700; margin:20px; font-weight:bold;">+ 150 монет</div>
-                    <button class="game-btn" onclick="document.getElementById('dragonGameModal').classList.remove('active')">Закрыть</button>
-                </div>
-            `;
-        }
-        // Закрытие по Esc
+
+        // Закрытие игры по Esc
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                document.getElementById('dragonGameModal').classList.remove('active');
-                gameActive = false;
+                document.getElementById('dragonCatcherModal').style.display = 'none';
             }
         });
     </script>
 </body>
 </html>
-
-
 
 
 

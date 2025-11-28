@@ -685,7 +685,6 @@
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
         }
-
         /* ИГРА: ИСПЫТАНИЕ ДРАКОНА */
         .dragon-game-modal {
             position: fixed;
@@ -698,6 +697,9 @@
             justify-content: center;
             align-items: center;
             z-index: 3500;
+        }
+        .dragon-game-modal.active {
+            display: flex;
         }
         .dragon-status {
             position: absolute;
@@ -751,7 +753,6 @@
             cursor: pointer;
             margin-top: 15px;
         }
-
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .navbar {
@@ -1087,13 +1088,11 @@
             <div id="guide" class="guide-section">
                 <h2 class="guide-title">ПУТЕВОДИТЕЛЬ ДРАКОНА</h2>
                 <p class="guide-subtitle">Выберите свой путь к просветлению в математике</p>
-                
                 <!-- КНОПКА ИГРЫ -->
                 <div onclick="startDragonGame()" style="text-align:center; padding:15px; background:linear-gradient(135deg, #8a2be2, #4a00e0); border:1px solid #ffd700; border-radius:12px; cursor:pointer; margin:20px 0; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);">
                     <h3 style="color:#ffd700; font-family:'Playfair Display',serif; margin-bottom:8px; text-shadow: 0 0 8px rgba(0,0,0,0.6);">🐉 Испытание Дракона</h3>
                     <p style="color:#e0e0ff; font-size:0.95rem; font-weight:500;">Поймай 10 драконов — ответь на 3 вопроса — получи 150 монет!</p>
                 </div>
-                
                 <div class="guide-grid">
                     <!-- ПУТЬ ОДИНОКИ СТРАННИКА -->
                     <div class="guide-card" onclick="openModal(0)">
@@ -1151,13 +1150,11 @@
             <button class="modal-contact-button" onclick="contactSeller()">Связаться с Драконом</button>
         </div>
     </div>
-
     <!-- МОДАЛЬНОЕ ОКНО ИГРЫ -->
     <div class="dragon-game-modal" id="dragonGameModal">
         <div class="dragon-status" id="gameStatus">Поймай 10 драконов</div>
         <div id="gameArea"></div>
     </div>
-
     <script>
         // ДАННЫЕ ПУТЕШЕСТВИЙ
         const journeys = [
@@ -1188,7 +1185,6 @@
         ];
         let currentSlide = 0;
         let currentJourneyIndex = 0;
-
         // Создание магических частиц при клике
         document.addEventListener('click', function(e) {
             createMagicParticles(e.clientX, e.clientY);
@@ -1423,51 +1419,43 @@
                 });
             });
         });
-
         // ============ ИГРА: ИСПЫТАНИЕ ДРАКОНА ============
         let caught = 0;
         let gameActive = true;
         let dragonElements = [];
         let currentQuestion = 0;
-
         // Три простых вопроса
         const QUESTIONS = [
             { text: "Чему равен корень из 144?", answer: 12 },
             { text: "Сколько градусов в прямом угле?", answer: 90 },
             { text: "Вычисли: 7² – 5²", answer: 24 }
         ];
-
         function startDragonGame() {
             caught = 0;
             gameActive = true;
             dragonElements = [];
             currentQuestion = 0;
-            document.getElementById('dragonGameModal').style.display = 'flex';
+            document.getElementById('dragonGameModal').classList.add('active');
             loadDragons();
         }
-
         function loadDragons() {
             const area = document.getElementById('gameArea');
             area.innerHTML = '<div class="dragon-status">Поймай 10 драконов</div>';
-            
             for (let i = 0; i < 10; i++) {
                 setTimeout(() => {
                     if (gameActive) createDragon(area);
                 }, i * 400);
             }
         }
-
         function createDragon(container) {
             const dragon = document.createElement('div');
             dragon.className = 'dragon-target';
             dragon.textContent = '🐉';
             dragon.style.left = Math.random() * 85 + 5 + '%';
             dragon.style.top = Math.random() * 70 + 10 + '%';
-            
             // Очень медленное движение (уровень 2)
             const dx = (Math.random() - 0.5) * 0.3;
             const dy = (Math.random() - 0.5) * 0.3;
-            
             dragon.onclick = () => {
                 if (gameActive && dragon.style.opacity !== '0') {
                     dragon.style.opacity = '0';
@@ -1476,12 +1464,10 @@
                     if (caught >= 10) showQuestion(0);
                 }
             };
-            
             container.appendChild(dragon);
             dragonElements.push({ el: dragon, x: parseFloat(dragon.style.left), y: parseFloat(dragon.style.top), dx, dy });
             moveDragons();
         }
-
         function moveDragons() {
             if (!gameActive) return;
             dragonElements.forEach(d => {
@@ -1495,7 +1481,6 @@
             });
             requestAnimationFrame(moveDragons);
         }
-
         function showQuestion(qIndex) {
             const area = document.getElementById('gameArea');
             const q = QUESTIONS[qIndex];
@@ -1510,7 +1495,6 @@
                 </div>
             `;
         }
-
         function checkAnswer(correct, qIndex) {
             const userAns = parseInt(document.getElementById('answerInput').value);
             if (userAns === correct) {
@@ -1523,7 +1507,6 @@
                 alert('❌ Неверно! Попробуй снова.');
             }
         }
-
         function winGame() {
             gameActive = false;
             const area = document.getElementById('gameArea');
@@ -1533,27 +1516,20 @@
                     <h2 style="color:#ffd700; font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:20px;">Победа!</h2>
                     <p style="color:#e0e0ff; margin-bottom:20px;">Ты ответил на все вопросы правильно!</p>
                     <div style="font-size:2rem; color:#ffd700; margin:20px; font-weight:bold;">+ 150 монет</div>
-                    <button class="game-btn" onclick="document.getElementById('dragonGameModal').style.display='none'">Закрыть</button>
+                    <button class="game-btn" onclick="document.getElementById('dragonGameModal').classList.remove('active')">Закрыть</button>
                 </div>
             `;
         }
-
         // Закрытие по Esc
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                document.getElementById('dragonGameModal').style.display = 'none';
+                document.getElementById('dragonGameModal').classList.remove('active');
                 gameActive = false;
             }
         });
     </script>
 </body>
 </html>
-
-
-
-
-
-
 
 
 
